@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:conetxt="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 包扫描 -->
+    <conetxt:component-scan base-package="com.atguigu.controller"/>
+
+    <!-- 配置Thymeleaf视图解析器 -->
+    <bean id="viewResolver" class="org.thymeleaf.spring6.view.ThymeleafViewResolver">
+        <!-- 设置此视图解析器的优先级，可以有多个视图解析器 -->
+        <property name="order" value="1"/>
+        <!-- 视图解析器的编码格式 -->
+        <property name="characterEncoding" value="UTF-8"/>
+        <!-- 配置视图解析器的模板引擎 -->
+        <property name="templateEngine">
+            <bean class="org.thymeleaf.spring6.SpringTemplateEngine">
+                <!-- 配置模板解析器 -->
+                <property name="templateResolver">
+                    <bean class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
+                        <!-- 视图前缀 -->
+                        <property name="prefix" value="/WEB-INF/templates/"/>
+                        <!-- 视图后缀 -->
+                        <property name="suffix" value=".html"/>
+
+                        <!-- 视图模块格式 -->
+                        <property name="templateMode" value="HTML"/>
+                        <!-- 页面编码 -->
+                        <property name="characterEncoding" value="UTF-8" />
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+</beans>
