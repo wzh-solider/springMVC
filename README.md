@@ -442,6 +442,17 @@ public String testRequestMapping(){
 
 注意：在使用\**时，只能使用/**/xxx的方式
 
+```xml
+<!-- 解决springmvc识别ant格式的/**/请求时，浏览器500异常 -->
+<bean id="antPathMatcher" class="org.springframework.util.AntPathMatcher">
+    <property name="caseSensitive" value="true"/>
+    <property name="trimTokens" value="false"/>
+</bean>
+<mvc:annotation-driven>
+    <mvc:path-matching path-matcher="antPathMatcher"/>
+</mvc:annotation-driven>
+```
+
 ### 8、SpringMVC支持路径中的占位符（重点）
 
 原始方式：/deleteUser?id=1
@@ -501,7 +512,11 @@ public String testParam(String username, String password){
 >
 > 若使用字符串数组类型的形参，此参数的数组中包含了每一个数据
 >
+> ![image-20230912164236571](imgs/image-20230912164236571.png)
+>
 > 若使用字符串类型的形参，此参数的值为每个数据中间使用逗号拼接的结果
+>
+> ![image-20230912164540230](imgs/image-20230912164540230.png)
 
 ### 3、@RequestParam
 
@@ -513,9 +528,15 @@ value：指定为形参赋值的请求参数的参数名
 
 required：设置是否必须传输此请求参数，默认值为true
 
-若设置为true时，则当前请求必须传输value所指定的请求参数，若没有传输该请求参数，且没有设置defaultValue属性，则页面报错400：Required String parameter 'xxx' is not present；若设置为false，则当前请求不是必须传输value所指定的请求参数，若没有传输，则注解所标识的形参的值为null
+**若设置为true时，则当前请求必须传输value所指定的请求参数**，若没有传输该请求参数，且没有设置defaultValue属性，则页面报错400：Required String parameter 'xxx' is not present；若设置为false，则当前请求不是必须传输value所指定的请求参数，若没有传输，则注解所标识的形参的值为null
+
+![image-20230912165903447](imgs/image-20230912165903447.png)
+
+![image-20230912170440795](imgs/image-20230912170440795.png)
 
 defaultValue：不管required属性值为true或false，当value所指定的请求参数没有传输或传输的值为""时，则使用默认值为形参赋值
+
+![image-20230912170154513](imgs/image-20230912170154513.png)
 
 ### 4、@RequestHeader
 
@@ -695,7 +716,7 @@ public String testHello(){
 }
 ```
 
-![](img/img002.png)
+![](imgs/img002.png)
 
 ### 2、转发视图
 
@@ -714,7 +735,7 @@ public String testForward(){
 }
 ```
 
-![image-20210706201316593](img/img003.png)
+![image-20210706201316593](imgs/img003.png)
 
 ### 3、重定向视图
 
@@ -731,7 +752,7 @@ public String testRedirect(){
 }
 ```
 
-![image-20210706201602267](img/img004.png)
+![image-20210706201602267](imgs/img004.png)
 
 > 注：
 >
@@ -1720,7 +1741,7 @@ public String index(){
 
 DispatcherServlet 本质上是一个 Servlet，所以天然的遵循 Servlet 的生命周期。所以宏观上是 Servlet 生命周期来进行调度。
 
-![images](img/img005.png)
+![images](imgs/img005.png)
 
 ##### a>初始化WebApplicationContext
 
@@ -2104,15 +2125,15 @@ i. 再判断是否配置了mvc:default-servlet-handler
 
 ii. 如果没配置，则控制台报映射查找不到，客户端展示404错误
 
-![image-20210709214911404](img/img006.png)
+![image-20210709214911404](imgs/img006.png)
 
-![image-20210709214947432](img/img007.png)
+![image-20210709214947432](imgs/img007.png)
 
 iii. 如果有配置，则访问目标资源（一般为静态资源，如：JS,CSS,HTML），找不到客户端也会展示404错误
 
-![image-20210709215255693](img/img008.png)
+![image-20210709215255693](imgs/img008.png)
 
-![image-20210709215336097](img/img009.png)
+![image-20210709215336097](imgs/img009.png)
 
 b) 存在则执行下面的流程
 

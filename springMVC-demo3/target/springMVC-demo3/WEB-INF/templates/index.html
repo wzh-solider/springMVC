@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome first Page</title>
+</head>
+<body>
+    <h1>SpringMVC获取请求参数</h1>
+    <a th:href="@{/testRequestParams/servletAPI(username='admin', password='123456')}">
+        通过ServletAPI接口获取参数
+    </a>
+    <br>
+
+    <a th:href="@{/testRequestParams/dispatcherMethod(username='admin', password='123456')}">
+        通过请求控制器方法中的形参，获取参数
+    </a>
+
+    <h1>表单测试</h1>
+    <form th:action="@{/testRequestParams/dispatcherMethod}" method="post">
+        用户名：<input type="text" name="username"><br>
+        密码：<input type="password" name="password"><br>
+        爱好：<input type="checkbox" name="hobbies" value="篮球">
+        <input type="checkbox" name="hobbies" value="足球">
+        <input type="checkbox" name="hobbies" value="乒乓球"><br>
+        <input type="submit" value="提交表单">
+    </form>
+
+    <a th:href="@{/testRequestParams/requestParam(password='123456')}">
+        通过@RequestParam注解，获取请求参数
+    </a>
+
+    <h3>根据请求头信息获取数据</h3>
+    <form th:action="@{/testRequestParams/requestHeader}" method="post">
+        用户名：<input type="text" name="username"><br>
+        密码：<input type="password" name="password"><br>
+        <input type="submit" value="提交表单">
+    </form>
+
+    <a th:href="@{/testRequestParams/cookieValue}">
+        通过@CookieValue属性，来获取cookie信息
+    </a>
+
+    <h1>通过POJO实体类的映射，获取请求参数</h1>
+    <form th:action="@{/testRequestParams/testPOJO}" method="post">
+        username: <input type="text" name="username" id="username"><br>
+        password: <input type="password" name="password" id="password"><br>
+        age: <input type="text" name="age" id="age"><br>
+        sex: <input type="radio" name="sex" value="男">男 <input type="radio" name="sex" value="女"> 女<br>
+        email: <input type="email" name="email" id="email"><br>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>
