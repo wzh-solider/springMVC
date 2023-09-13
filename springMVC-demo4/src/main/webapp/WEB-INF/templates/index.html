@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Page</title>
+</head>
+<body>
+    <h1>Welcome, Page</h1>
+    <h2>Request Scope Objects Share Data Methods</h2>
+    <a th:href="@{/scope/servletAPI}">
+        通过ServletAPI向请求域中添加数据
+    </a>
+    <br>
+    <a th:href="@{/scope/modelAndView}">
+        通过ModelAndView向请求域中添加数据
+    </a>
+    <br>
+    <a th:href="@{/scope/model}">
+        通过Model向请求域中添加数据
+    </a>
+    <br>
+    <a th:href="@{/scope/map}">
+        通过Map向请求域中添加数据
+    </a>
+    <br>
+    <a th:href="@{/scope/modelMap}">
+        通过ModelMap向请求域中添加数据
+    </a>
+
+    <h2>Session Scope Objects Share Data Methods</h2>
+    <a th:href="@{/scope/session}">
+        向会话域中添加数据
+    </a>
+
+    <h2>Application Scope Objects Share Data Methods</h2>
+    <a th:href="@{/scope/application}">
+        向应用域中添加数据
+    </a>
+</body>
+</html>

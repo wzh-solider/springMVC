@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Successful</title>
+</head>
+<body>
+    <h1 style="margin: auto 45%">Success</h1>
+
+    <!-- 取出request域中的数据 -->
+    <p th:text="${scope}" style="font-size: 30px;"></p>
+
+    <!-- 取出session域中的数据 -->
+    <p th:text="${session.sessionScope}" style="font-size: 30px"></p>
+
+    <!-- 取出application域中的数据 -->
+    <p th:text="${application.applicationScope}" style="font-size: 30px"></p>
+</body>
+</html>
