@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 包扫描 -->
     <context:component-scan base-package="com.atguigu.mvc.controller"/>
@@ -33,4 +34,15 @@
             </bean>
         </property>
     </bean>
+
+    <!-- 视图控制器view-controller -->
+    <!--
+        注意：如果只进行view-controller的配置，会导致默认的mvc:annotation-driven注解驱动关闭
+             此时，我们在controller配置的所有请求映射都会失效
+     -->
+    <mvc:view-controller path="/" view-name="index"/>
+    <!--
+        解决方法：就是重新开启mvc:annotation-driven的注解驱动
+    -->
+    <mvc:annotation-driven/>
 </beans>
