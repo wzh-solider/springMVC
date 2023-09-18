@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>RESTFul</title>
+    </head>
+    <body>
+        <a th:href="@{/user}">测试查询所有用户信息</a>
+        <form th:action="@{/user/1}" method="get">
+            <input type="submit" value="测试查询单个用户信息">
+        </form>
+
+        <form th:action="@{/user}" method="post">
+            username：<input type="text" name="username"><br>
+            password：<input type="text" name="password"><br>
+            <input type="submit" value="测试添加用户信息">
+        </form>
+
+        <form th:action="@{/user}" method="post">
+            <input type="hidden" name="_method" value="put">
+            username：<input type="text" name="username"><br>
+            password：<input type="text" name="password"><br>
+            <input type="submit" value="测试修改用户信息【隐藏代码】">
+        </form>
+
+        <form th:action="@{/user/1}" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="测试删除用户信息【隐藏代码】">
+        </form>
+    </body>
+</html>

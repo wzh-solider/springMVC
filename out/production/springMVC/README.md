@@ -616,12 +616,6 @@ public String testServletAPI(HttpServletRequest request){
 
 ### 2、使用ModelAndView向request域对象共享数据
 
-> **重要**
->
-> 不论使用什么方法向request域对象共享数据，
->
-> 都会将其封装为：`ModelAndView`对象
-
 ```java
 @RequestMapping("/testModelAndView")
 public ModelAndView testModelAndView(){

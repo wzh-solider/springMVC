@@ -8,8 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springMVC-demo1" />
         <module name="springMVC-demo2" />
+        <module name="springMVC-demo5-RESTFul" />
         <module name="springMVC-demo3" />
+        <module name="springMVC-demo4" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="srpingMVC-demo4" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

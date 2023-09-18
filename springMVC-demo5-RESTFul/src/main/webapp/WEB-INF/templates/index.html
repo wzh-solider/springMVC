@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome Pge</title>
+    </head>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("delete").onclick = function () {
+                var b = confirm("确定要删除吗？");
+                if (b) {
+                    // TODO：删除员工
+                    // 根据选择的员工id，使用restful风格的url，提交表单
+                    var value = document.querySelector("option:checked").value;
+                    document.getElementById("form_delete").action += "/" + value;
+                    // console.log(value)
+                    // 将表单提交
+                    document.getElementById("form_delete").submit();
+                } else {
+                    // TODO：取消删除
+                }
+            }
+
+            document.getElementById("find").onclick = function () {
+                // 弹窗提示输入员工id
+                var value = prompt("请输入员工id：");
+
+                if (confirm("确定要查询吗？")) {
+                    // TODO：查询员工
+                    document.querySelector("#form_find").action += "/" + value;
+                    console.log(value)
+                    // 提交查询
+                    document.querySelector("#form_find").submit();
+                } else {
+                    // TODO：取消查询
+                }
+            }
+        }
+    </script>
+
+    <body>
+        <h1>Welcome Home Page</h1>
+
+        <form th:action="@{/all}" method="GET">
+            <input type="submit" value="获取所有员工列表">
+        </form>
+
+        <form th:action="@{/add}" method="POST">
+            lastName：<input type="text" name="lastName"><br>
+            email：<input type="email" name="email"><br>
+            gender：<input type="radio" name="gender" value="男">男
+            <input type="radio" name="gender" value="女"/>女
+            <br>
+            <input type="submit" value="添加员工">
+        </form>
+
+        <form th:action="@{/delete}" method="POST" id="form_delete">
+            <input type="hidden" name="_method" value="DELETE"/>
+            请选择需要删除的员工id：
+            <label>
+                <select id="sel">
+                    <option th:each="emp : ${emps}" th:text="${emp.id}" th:value="${emp.id}">
+                    </option>
+                </select>
+            </label>
+            <input type="button" value="删除员工" id="delete">
+        </form>
+
+        <form th:action="@{/find}" method="GET" id="form_find">
+            <input type="button" value="查询员工" id="find">
+        </form>
+    </body>
+
+</html>

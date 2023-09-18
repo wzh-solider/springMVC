@@ -28,7 +28,7 @@
                         <!-- 视图模块格式 -->
                         <property name="templateMode" value="HTML"/>
                         <!-- 页面编码 -->
-                        <property name="characterEncoding" value="UTF-8" />
+                        <property name="characterEncoding" value="UTF-8"/>
                     </bean>
                 </property>
             </bean>
@@ -41,8 +41,11 @@
              此时，我们在controller配置的所有请求映射都会失效
      -->
     <mvc:view-controller path="/" view-name="index"/>
+    <mvc:view-controller path="/test_rest" view-name="test_RESTFul"/>
     <!--
         解决方法：就是重新开启mvc:annotation-driven的注解驱动
     -->
     <mvc:annotation-driven/>
+
+
 </beans>

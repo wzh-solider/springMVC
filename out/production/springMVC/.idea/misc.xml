@@ -7,7 +7,15 @@
         <option value="$PROJECT_DIR$/springMVC-demo1/pom.xml" />
         <option value="$PROJECT_DIR$/springMVC-demo2/pom.xml" />
         <option value="$PROJECT_DIR$/springMVC-demo3/pom.xml" />
+        <option value="$PROJECT_DIR$/srpingMVC-demo4/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC-demo4/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC-demo5-RESTFul/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/srpingMVC-demo4/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
